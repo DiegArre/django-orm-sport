@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Leagues</title>
+	</head>
+	<body>
+
+		<h1>Todas las ligas de beisbol</h1>
+		<ol>
+			{%for liga in ligas_baseball%}
+			<li>{{liga.name}}</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todas la ligas de mujeres</h1>
+		<ol>
+			{%for liga in ligas_mujeres%}
+			<li>{{liga.name}}</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todas las ligas donde el deporte es cualquier tipo de hockey</h1>
+		<ol>
+			{%for liga in ligas_hockey%}
+			<li>{{liga.name}}</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todas las ligas donde el deporte no sea football</h1>
+		<ol>
+			{%for liga in ligas_sin_futbol%}
+			<li>{{liga.name}}</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todas las ligas que se llaman "conferencias"</h1>
+		<ol>
+			{%for liga in ligas_conference%}
+			<li>{{liga.name}}</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todas las ligas de la región atlántica</h1>
+		<ol>
+			{%for liga in ligas_atlantica%}
+			<li>{{liga.name}}</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todos los equipos con sede en Dallas</h1>
+		<ol>
+			{%for equipo in equipos_dallas%}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todos los equipos nombraron los Raptors</h1>
+		<ol>
+			{%for equipo in equipos_raptor%}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todos los equipos cuya ubicación incluye "Ciudad"</h1>
+		<ol>
+			{%for equipo in equipos_ciudad%}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Leagues</h1>
+		<ol>
+			{% for league in leagues %}
+				<li>{{league.name}} -- {{league.sport}}</li>
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Teams</h1>
+		<ol>
+			{% for team in teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Players</h1>
+		<ol>
+			{% for player in players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+	</body>
+</html>
