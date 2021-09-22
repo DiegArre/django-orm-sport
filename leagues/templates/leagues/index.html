@@ -4,7 +4,9 @@
 		<title>Sports Leagues</title>
 	</head>
 	<body>
-
+		<hr>
+		<h1>Sports ORM 1</h1>
+		<hr>
 		<h1>Todas las ligas de beisbol</h1>
 		<ol>
 			{%for liga in ligas_baseball%}
@@ -68,6 +70,64 @@
 			{%endfor%}
 		</ol>
 
+		
+		<h1>Todos los equipos cuyos nombres comienzan con "T"</h1>
+		<ol>
+			{%for equipo in equipos_t%}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todos los equipos, ordenados alfabéticamente por ubicación</h1>
+		<ol>
+			{%for equipo in equipos_order_u%}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todos los equipos, ordenados por nombre de equipo en orden alfabético inverso</h1>
+		<ol>
+			{%for equipo in equipos_order_t%}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Cada jugador con apellido "Cooper"</h1>
+		<ol>
+			{%for player in player_cooper%}
+			<li>{{player.first_name}} {{player.last_name}} ({{player.curr_team.team_name}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Cada jugador con apellido "Joshua"</h1>
+		<ol>
+			{%for player in player_joshua%}
+			<li>{{player.first_name}} {{player.last_name}} ({{player.curr_team.team_name}})</li>
+			{%endfor%}
+		</ol>
+		<hr>
+		<h1>Sports ORM 2</h1>
+		<hr>
+
+		<h1>Todos los equipos en la Atlantic Soccer Conference</h1>
+		<ol>
+			{%for equipo in liga_atlantic.teams.all %}
+			<li>{{equipo.team_name}} ({{equipo.location}})</li>
+			{%endfor%}
+		</ol>
+
+		<h1>Todos los jugadores (actuales) en los Boston Penguins</h1>
+		<ol>
+			{%for player in jugadores_boston %}
+			<li>{{player.first_name}} {{player.last_name}} ({{player.curr_team.team_name}})</li>
+			{%endfor%}	
+		</ol>
+
+
+
+		<hr>
+		<h1>ALL</h1>
+		<hr>
 		<h1>Leagues</h1>
 		<ol>
 			{% for league in leagues %}

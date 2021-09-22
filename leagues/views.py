@@ -17,7 +17,18 @@ def index(request):
 		"ligas_atlantica" : League.objects.filter(name__contains= "Atlantic"),
 		"equipos_dallas" : Team.objects.filter(location = "Dallas"),
 		"equipos_raptor": Team.objects.filter(team_name__contains ="Raptors"),
-		"equipos_ciudad" : Team.objects.filter(location__contains = "City")
+		"equipos_ciudad" : Team.objects.filter(location__contains = "City"),
+		"equipos_t": Team.objects.filter(team_name__startswith ="T"),
+		"equipos_order_u" : Team.objects.all().order_by("location"),
+		"equipos_order_t" : Team.objects.all().order_by("-team_name"),
+		"player_cooper" : Player.objects.filter(last_name = "Cooper"),
+		"player_joshua" : Player.objects.filter(first_name = "Joshua"),
+		"player_cooper_e" : Player.objects.filter(last_name = "Cooper").exclude(first_name = "Joshua"),
+		#SPORTS ORM 2 
+
+		"liga_atlantic" : League.objects.filter(name__contains = "Atlantic"),
+		'jugadores_boston': Player.objects.filter(curr_team__team_name="Boston Penguins"),
+
 	}
 	return render(request, "leagues/index.html", context)
 
